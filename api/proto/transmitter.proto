@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "pkg/api;api";
+
+package api;
+
+service Transmitter{
+  rpc StreamData(RequestMessage) returns (stream TransmitData) {}
+}
+
+message TransmitData {
+  string session_id = 1;
+  double frequency = 2;
+  int64 timestamp =3;
+}
+
+message RequestMessage{
+  string client_id = 1;
+}
